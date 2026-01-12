@@ -18,4 +18,4 @@ app.post('/api/messages', (req, res) => {
     res.status(201).send({ message: "Received!" });
 });
 
-app.listen(PORT, () => console.log(`Server: https://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server: http://localhost:${PORT}`));
