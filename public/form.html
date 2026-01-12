@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Message</title>
+</head>
+
+<body>
+
+    <h1>Add a Message</h1>
+    <p><a href="index.html">Back to Table</a></p>
+
+    <form id="messageForm">
+        <label>Name:</label><br>
+        <input type="text" id="userName" required><br><br>
+
+        <label>Message:</label><br>
+        <textarea id="userMessage" required></textarea><br><br>
+
+        <button type="submit">Send to API</button>
+    </form>
+
+    <script>
+        document.getElementById('messageForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const dataToSend = {
+                name: document.getElementById('userName').value,
+                message: document.getElementById('userMessage').value,
+            };
+
+            const response = await fetch('/api/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataToSend)
+            });
+
+            if (response.ok) {
+                window.location.href = 'index.html';
+            } else {
+                alert("Something went wrong!");
+            }
+        });
+    </script>
+</body>
+
+</html>
