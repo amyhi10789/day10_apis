@@ -50,8 +50,10 @@
         }
 
         async function deleteMessage(index) {
+            console.log("Delete clicked:", index);
+
             await fetch(`/api/messages/${index}`, {
-                methord: 'DELETE'
+                method: 'DELETE'
             });
 
             loadMessages();
